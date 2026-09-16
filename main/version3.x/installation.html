@@ -5643,19 +5643,17 @@ You're not viewing the latest version.
 <p>若要进行模型训练或模型导出，需另行安装训练相关依赖。该路径与第 1 节的 <code>paddleocr</code> 包及可选依赖组属于不同安装维度，同一环境中可同时存在，无需强制隔离。训练与导出依赖飞桨框架，请先参考 <a href="paddlepaddle_installation.html">飞桨框架安装</a> 安装飞桨框架。如果当前环境中已安装飞桨之外的推理引擎（如 Transformers），可能会出现依赖冲突，建议在全新的环境中进行安装。</p>
 <p><strong>Python 版本要求</strong>：训练与模型导出支持 Python 3.8 及以上。</p>
 <p>将本仓库克隆到本地后安装其余依赖：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 推荐方式</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/PaddlePaddle/PaddleOCR
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># （可选）切换到指定分支</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>git<span class="w"> </span>checkout<span class="w"> </span>release/3.5
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 如果因为网络问题无法克隆成功，也可选择使用码云上的仓库：</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>git<span class="w"> </span>clone<span class="w"> </span>https://gitee.com/paddlepaddle/PaddleOCR
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># 注：码云托管代码可能无法实时同步本 GitHub 项目更新，存在3~5天延时，请优先使用推荐方式。</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/PaddlePaddle/PaddleOCR.git
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>PaddleOCR
 </span></code></pre></div>
+<p>默认只下载当前分支的最新版本，适合训练和导出。需要完整提交历史时，在仓库目录执行 <code>git fetch --unshallow</code>。</p>
+<p>若需要指定版本，请在克隆时选择分支，例如：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--branch<span class="w"> </span>release/3.5<span class="w"> </span>https://github.com/PaddlePaddle/PaddleOCR.git<span class="w"> </span>PaddleOCR-3.5
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>PaddleOCR-3.5
+</span></code></pre></div>
+<p>以上两种方式二选一。如果 GitHub 网络不可用，可将克隆地址替换为 <code>https://gitee.com/paddlepaddle/PaddleOCR.git</code>；镜像可能延迟 3–5 天。</p>
 <p>执行如下命令安装其余训练依赖：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </span></code></pre></div>
 
 <!-- Source file information -->
